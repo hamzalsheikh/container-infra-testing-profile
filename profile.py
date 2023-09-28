@@ -21,7 +21,6 @@ request = pc.makeRequestRSpec()
 node = request.RawPC("node")
 
 # Allocate a node and ask for a 30GB file system mounted at /mydata
-node = request.RawPC("node")
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU16-64-STD"
 bs = node.Blockstore("bs", "/mydata")
 bs.size = "30GB"
