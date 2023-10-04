@@ -16,7 +16,7 @@ import geni.rspec.pg as pg
 pc = portal.Context()
 
 # Describe the parameter(s) this profile script can accept.
-pc.defineParameter("dataset", "Dataset to use", portal.ParameterType.STRING, 1)
+pc.defineParameter( "dataset", "Dataset to use", portal.ParameterType.STRING, 1 )
 
 # Retrieve the values the user specifies during instantiation.
 params = pc.bindParameters()
@@ -28,20 +28,13 @@ request = pc.makeRequestRSpec()
 node = request.RawPC("node")
 
 # Check parameter validity. Should fetch the dataset from the long-term volume
-match params.dataset:
-    case "sandy":
-        
-        pc.reportError( portal.ParameterError( "Sandy dataset is not available right now") )
 
-    case "snow":
-        pc.reportError( portal.ParameterError( "Snow dataset is not available right now") )
-    
-    case _:
-        pc.reportError( portal.ParameterError( "You must choose one of the available dataset") )
+if params.dataset == "sandy":
+    pc.reportError( portal.ParameterError( "Sandy dataset is not available right now") )
 
 # Allocate a node and ask for a 30GB file system mounted at /mydata
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU16-64-STD"
-bs = node.Blockstore("bs", "/mydata")
+bs = node.Blockstore ("bs", "/mydata")
 bs.size = "30GB"
 
 # Install and execute a script that is contained in the repository.
