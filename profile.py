@@ -16,7 +16,7 @@ import geni.rspec.pg as pg
 pc = portal.Context()
 
 # Describe the parameter(s) this profile script can accept.
-pc.defineParameter( "dataset", "Dataset to use", portal.ParameterType.STRING, 1 )
+pc.defineParameter( "dataset", "Dataset to use", portal.ParameterType.STRING, "sandy")
 
 # Retrieve the values the user specifies during instantiation.
 params = pc.bindParameters()
