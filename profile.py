@@ -30,7 +30,7 @@ node = request.RawPC("node")
 # Check parameter validity. Should fetch the dataset from the long-term volume
 
 if params.dataset == "sandy":
-    pc.reportError( portal.ParameterError( "Sandy dataset is not available right now") )
+    pc.reportError( portal.ParameterError( "Sandy dataset is not available right now" , ["dataset"]) )
 
 # Allocate a node and ask for a 30GB file system mounted at /mydata
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU16-64-STD"
